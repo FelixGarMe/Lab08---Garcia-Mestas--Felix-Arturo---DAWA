@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD de Usuarios</title>
+  <!-- Agregamos los enlaces a Bootstrap CSS, jQuery y Animate.css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* Agregue aquí sus estilos personalizados */
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="animate__animated animate__bounce">Usuarios</h1>
+    <form action="/users" method="POST" class="col-md-6 mx-auto animate__animated animate__fadeIn">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name "email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary animate__animated animate__fadeInUp">Crear Usuario</button>
+    </form>
+    <hr class="animate__animated animate__fadeIn">
+    <h2 class="animate__animated animate__bounceIn">Lista de Usuarios</h2>
+    <ul class="list-group col-md-6 mx-auto animate__animated animate__fadeIn">
+      <% users.forEach((user) => { %>
+        <li class="list-group-item">
+          <%= user.name %> (<%= user.email %>)
+          <a href="/users/edit/<%= user._id %>" class="btn btn-warning btn-sm ml-2">Editar</a>
+          <a href="/users/delete/<%= user._id %>" class="btn btn-danger btn-sm">Eliminar</a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>
